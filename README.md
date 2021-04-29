@@ -59,8 +59,6 @@ fib(50)=12586269025
 * Connection #0 to host localhost left intact
 ```
 
-And you can change the host and message:
-
 You can omit the `-v` to just see the response body:
 
 ```console
