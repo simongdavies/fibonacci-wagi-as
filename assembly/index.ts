@@ -1,8 +1,11 @@
 import "wasi";
 import { Console, Environ, CommandLine } from "as-wasi";
 
-Console.log("content-type: text/plain");
+// Without \r on windows blank line is not produced by first console.log
+
+Console.write("content-type: text/plain\n\r",false);
 Console.log("");
+
 let commandLine = new CommandLine();
 let args = commandLine.all();
 let n=0;
