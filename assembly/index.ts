@@ -1,17 +1,13 @@
 import "wasi";
-import { Console, Environ, CommandLine } from "as-wasi";
 
-// Without \r on windows blank line is not produced by first console.log
+console.log("Content-Type: text/plain");
+console.log("");
 
-Console.write("content-type: text/plain\n\r",false);
-Console.log("");
-
-let commandLine = new CommandLine();
-let args = commandLine.all();
+let args = process.argv;
 let n=0;
-if (args.length > 0) 
+if (args.length > 1) 
 {
-  n=I32.parseInt(args[0]);
+  n=I32.parseInt(args[1]);
 }
 var output:string;
 if (n<=93) {
@@ -21,7 +17,7 @@ if (n<=93) {
   output="can only calculate up to fib(93)";
 }
 
-Console.log(output);
+console.log(output);
 
 function fib(n: i32): u64 {
   var a:u64 = 0, b:u64 = 1
